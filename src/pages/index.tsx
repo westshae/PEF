@@ -18,12 +18,7 @@ const Home: NextPage = () => {
     <Container>
       <Navigation/>
       <Content>
-        {typeof window !== "undefined" &&
-        <div>
-          <h1>{email}</h1>
-          <h1>{token}</h1>
-        </div>
-        }
+        <h1>Test</h1>
       </Content>
       <Footer/>
     </Container>

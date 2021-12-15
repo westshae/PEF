@@ -13,15 +13,20 @@ const OverallStyle = styled.div`
 `
 
 const Form = styled.form`
-    /* display:grid;
-    grid-template-columns:1fr 2fr; */
+    justify-content:center;
 `
 
 const IndividualFormStyle = styled.div`
     display:flex;
-    /* flex-direction:row-reverse; */
     flex-grow:400;
-    justify-content:right;
+    justify-content:center;
+`
+
+const SubmitButton = styled.button`
+    justify-content:center;
+    width:100%;
+    background:transparent;
+    border:none;
 `
 
 const UserInput = () =>{
@@ -52,7 +57,7 @@ const UserInput = () =>{
                 <input value={code} onChange={(e) => setCode(e.target.value)} type="text" placeholder="Enter your code if recieved" id={"code"}/>
             </IndividualFormStyle>
 
-            <button type="submit">Submit</button>
+            <SubmitButton type="submit">Submit</SubmitButton>
         </Form>
     </OverallStyle>
   );
