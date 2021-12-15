@@ -1,6 +1,5 @@
-import axios from "axios";
-import { useState, createContext, useContext } from "react";
-import {saveUser} from "../interactions/user_interactions"
+import { useState } from "react";
+import {login} from "../interactions/user_interactions"
 import styled from "styled-components";
 
 interface User {
@@ -35,10 +34,11 @@ const UserInput = () =>{
     const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        saveUser(user).then((res)=>{
-            console.log(res?.data);
-            createContext(res?.data);
-        })
+        if(code == ""){
+            login(email, undefined);
+        }else{
+            login(email, code);
+        }
     }
 
     

@@ -1,48 +1,37 @@
-import axios from "axios";
-import React from "react";
-
-export const getAllExercises = async () =>{
-  let data;
-  try{
-    data = await (await axios.get("http://localhost:5000/exercise/all")).data;
-  }
-  catch(error){
-    console.error(error);
-  }
-  return data;
-}
-
-export const getExercise = async() =>{
-  let data;
-  try{
-    data = await (await axios.get("http://localhost:5000/exercise/specific")).data;
-  }
-  catch(error){
-    console.error(error);
-  }
-  return data;
-}
+import axios, {AxiosError, AxiosResponse} from "axios";
 
 interface User {
-  id:number, 
-  male: boolean,
-  age: number,
-  weight:number,
-  height:number,
-  currentfitness:string,
-  goals: string[],
-  time:number,
-  intensity:string,
-  injury:string[],
+  id:number,
+  email:string,
+  token:string,
 }
 
-export const saveUser = async (user:User) => {
+export const login = async (email:String, code?:String) => {
   let data;
 
   try{
-    data = await axios.post("http://localhost:5000/exercise/user", {
-      data: user
-    })
+    if(email == null) return;
+    if(code == undefined){
+      await axios.get("http://localhost:5000/auth/get",{
+        params:{
+          email:email
+        }
+      }).catch((e:AxiosError)=>{
+        console.error(e);
+      })
+    }else{
+      console.log("checkcode start")
+      data = await axios.get("http://localhost:5000/auth/checkcode", {
+        params:{
+          email:email,
+          code:code,
+        }
+      }).then((res:AxiosResponse)=>{
+        console.log("checkcode response");
+        console.log(res.status);
+        console.log(res.data);
+      })
+    }
   }catch(error){
     console.error(error);
   }

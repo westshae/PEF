@@ -29,17 +29,12 @@ const Section = styled.div`
     height:100%;
 `
 
-const Title = styled.button`
+const Title = styled.h1`
     font-size:1.5rem;
     background:transparent;
-    color:#322759 ;
+    color:#FFFFFF ;
     border:none;
     font-weight:bold;
-    padding-top:3%;
-    padding-bottom:3%;
-    :hover{
-        text-decoration:underline 2px;
-    }
 `
 
 //Logic for navigation bar
@@ -47,8 +42,10 @@ const Navigation = () => {
     return (
         <StyledNavigation>
                 <Section>
+                    <Title>Testing</Title>
                     <StyledLink href="/">Landing</StyledLink>
                     <StyledLink href="/dashboard">Dashboard</StyledLink>
+                    <StyledLink href="/login">Login</StyledLink>
                 </Section>
         </StyledNavigation>
     )

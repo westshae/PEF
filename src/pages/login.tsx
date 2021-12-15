@@ -7,16 +7,16 @@ import Container from '../components/Container'
 import Content from '../components/Content'
 import Footer from '../components/Footer'
 
-const Home: NextPage = () => {
+const Login: NextPage = () => {
   return (
     <Container>
       <Navigation/>
       <Content>
-        <h1>index</h1>
+        <UserInput/>
       </Content>
       <Footer/>
     </Container>
   )
 }
 
-export default Home
+export default Login
