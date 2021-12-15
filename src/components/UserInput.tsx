@@ -25,9 +25,6 @@ const IndividualFormStyle = styled.div`
 `
 
 const UserInput = () =>{
-
-    const [user, setUser] = useState(Object);
-
     const [email, setEmail] = useState("");
     const [code, setCode] = useState("");
 

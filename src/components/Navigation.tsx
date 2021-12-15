@@ -32,7 +32,7 @@ const Section = styled.div`
 const Title = styled.h1`
     font-size:1.5rem;
     background:transparent;
-    color:#FFFFFF ;
+    color:#505050 ;
     border:none;
     font-weight:bold;
 `

@@ -1,13 +1,12 @@
-import axios, {AxiosError, AxiosResponse} from "axios";
+import axios, {AxiosError} from "axios";
 
-interface User {
+interface CheckCodeResponse {
   id:number,
-  email:string,
-  token:string,
+  access_token:string,
 }
 
-export const login = async (email:String, code?:String) => {
-  let data;
+const login = async (email:string, code?:string) => {
+  let data:CheckCodeResponse;
 
   try{
     if(email == null) return;
@@ -21,20 +20,22 @@ export const login = async (email:String, code?:String) => {
       })
     }else{
       console.log("checkcode start")
-      data = await axios.get("http://localhost:5000/auth/checkcode", {
+      data = (await axios.get("http://localhost:5000/auth/checkcode", {
         params:{
           email:email,
           code:code,
         }
-      }).then((res:AxiosResponse)=>{
-        console.log("checkcode response");
-        console.log(res.status);
-        console.log(res.data);
-      })
+      })).data;
+
+      window.localStorage.setItem("token", data.access_token);
+      window.localStorage.setItem("email", email);
+
+
     }
   }catch(error){
     console.error(error);
   }
-
-  return data;
 }
+
+
+export {login}

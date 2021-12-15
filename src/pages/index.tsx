@@ -2,17 +2,28 @@ import type { NextPage } from 'next'
 
 //Component imports
 import Navigation from "../components/Navigation"
-import UserInput from '../components/UserInput'
 import Container from '../components/Container'
 import Content from '../components/Content'
 import Footer from '../components/Footer'
 
 const Home: NextPage = () => {
+  let email;
+  let token;
+  if(typeof window !== "undefined"){
+    email = window.localStorage.getItem("email");
+    token = window.localStorage.getItem("token");
+  }
+  // let user = useContext(userContext);
   return (
     <Container>
       <Navigation/>
       <Content>
-        <h1>index</h1>
+        {typeof window !== "undefined" &&
+        <div>
+          <h1>{email}</h1>
+          <h1>{token}</h1>
+        </div>
+        }
       </Content>
       <Footer/>
     </Container>
