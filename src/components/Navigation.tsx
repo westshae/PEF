@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link"
 
 //Style for navigation buttons
-const Button = styled.button`
+const StyledLink = styled(Link)`
     background:transparent;
     color: #322759 ;
     border:none;
@@ -42,18 +42,13 @@ const Title = styled.button`
     }
 `
 
-//Opens new tab without security issues
-const openInNewTab = (url:string) =>{
-    window.open(url, "_blank", "noopener");
-}
-
 //Logic for navigation bar
 const Navigation = () => {
     return (
         <StyledNavigation>
                 <Section>
-                    <Link href="/"><Button>Landing</Button></Link>
-                    <Link href="/dashboard"><Button>Dashboard</Button></Link>
+                    <StyledLink href="/">Landing</StyledLink>
+                    <StyledLink href="/dashboard">Dashboard</StyledLink>
                 </Section>
         </StyledNavigation>
     )
