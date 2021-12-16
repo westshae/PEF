@@ -1,19 +1,9 @@
 //Package imports
 import styled from "styled-components";
 import React from "react";
-import Link from "next/link"
 
-//Style for navigation buttons
-const StyledLink = styled(Link)`
-    background:transparent;
-    color: #322759 ;
-    border:none;
-    font-size:1.25em;
-    font-family:Helvetica;
-    :hover{
-        text-decoration:underline 2px;
-    }
-`
+import { StyledLink } from "./Button";
+
 //Style for navigation bar background
 const StyledNavigation = styled.nav`
     background-color: transparent;
@@ -43,9 +33,9 @@ const Navigation = () => {
         <StyledNavigation>
                 <Section>
                     <Title>Testing</Title>
-                    <StyledLink href="/">Landing</StyledLink>
-                    <StyledLink href="/dashboard">Dashboard</StyledLink>
-                    <StyledLink href="/login">Login</StyledLink>
+                    <StyledLink href="/" text="Landing"/>
+                    <StyledLink href="/dashboard" text="Dashboard"/>
+                    <StyledLink href="/login" text="Login"/>
                 </Section>
         </StyledNavigation>
     )
