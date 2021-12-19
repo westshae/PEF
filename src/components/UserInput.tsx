@@ -1,7 +1,6 @@
 import { useState } from "react";
 import {login} from "../interactions/user_interactions"
 import styled from "styled-components";
-import { StyledButton } from "./Button";
 
 interface User {
     id:number,
@@ -15,12 +14,21 @@ const OverallStyle = styled.div`
 
 const Form = styled.form`
     justify-content:center;
+    width:fit;
 `
 
 const IndividualFormStyle = styled.div`
     display:flex;
     flex-grow:400;
     justify-content:center;
+`
+
+const Button = styled.button`
+  font-size: 1.25rem;
+  background: transparent;
+  color: #800000;
+  border: none;
+  font-weight: bold;
 `
 
 const UserInput = () =>{
@@ -50,8 +58,7 @@ const UserInput = () =>{
                 <label htmlFor={"code"}>Code</label>
                 <input value={code} onChange={(e) => setCode(e.target.value)} type="text" placeholder="Enter your code if recieved" id={"code"}/>
             </IndividualFormStyle>
-
-            <StyledButton type="submit">Submit</StyledButton>
+            <Button type="submit">Submit</Button>
         </Form>
     </OverallStyle>
   );

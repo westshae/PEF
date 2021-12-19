@@ -2,7 +2,6 @@
 import styled from "styled-components";
 import React from "react";
 
-import { StyledLink } from "./Button";
 import Link from "next/link";
 
 //Style for navigation bar background
@@ -46,9 +45,8 @@ const Search = styled.input`
   justify-content: center;
   align-items: center;
   text-align: center;
-  width:100%;
-  height:60%;
   border:none;
+  height:2rem;
   input{
     border:none;
     :focus{
@@ -77,6 +75,9 @@ const Navigation = () => {
         </Link>
         <Link href="/settings">
           <Button>Settings</Button>
+        </Link>
+        <Link href="/login">
+          <Button>Login</Button>
         </Link>
       </Section>
     </StyledNavigation>
