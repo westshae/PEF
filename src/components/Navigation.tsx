@@ -33,17 +33,29 @@ const Title = styled.button`
   font-weight: bold;
 `;
 
-const Image = styled.img`
-  height: 3rem;
-  width: 3rem;
-  margin:0.25rem;
-  :hover{
-    opacity:50%;
-  }
+const Button = styled.a`
+  font-size: 1.25rem;
+  background: transparent;
+  color: #800000;
+  border: none;
+  font-weight: bold;
+  padding:1rem;
+`
+
+const Search = styled.input`
   justify-content: center;
   align-items: center;
   text-align: center;
-`;
+  width:100%;
+  height:60%;
+  border:none;
+  input{
+    border:none;
+    :focus{
+      border:none;
+    }
+  }
+`
 
 //Logic for navigation bar
 const Navigation = () => {
@@ -53,18 +65,18 @@ const Navigation = () => {
         <Title>Testing</Title>
       </Section>
       <Section side="right">
-        <Image src="/assets/UI/magnifying-glass.png" />
+        <Search/>
         <Link href="/">
-          <Image src="/assets/UI/news.png"/>
+          <Button>Homepage</Button>
         </Link>
         <Link href="/explore">
-          <Image src="/assets/UI/marketplace.png"/>
+          <Button>Explore</Button>
         </Link>
         <Link href="/profile">
-          <Image src="/assets/UI/smile.png" />
+          <Button>Your profile</Button>
         </Link>
         <Link href="/settings">
-          <Image src="/assets/UI/setting.png" />
+          <Button>Settings</Button>
         </Link>
       </Section>
     </StyledNavigation>
