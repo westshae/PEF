@@ -3,15 +3,15 @@ import styled from "styled-components";
 
 const CardContainer = styled.div`
   display:grid;
-  grid-template-columns:repeat(3, 1fr);
+  grid-template-columns:repeat(2, 1fr);
   gap:1rem;
 `
 
 const CardStyle = styled.div`
-  background-color:#bf3500;
-  color:#EDEDE5;
+  background-color:#dfdfcc;
+  color:#800000;
   padding:1rem;
-  border:solid;
+  border:transparent;
   border-radius:0.75rem;
 `
 

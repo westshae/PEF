@@ -17,9 +17,10 @@ const Content = styled.div`
     background-color:transparent;
     display:flex;
     flex-direction:column;
-    overflow:hidden;
-    margin-left:10%;
-    margin-right:10%;
+    overflow-x:hidden;
+    overflow-y:scroll;
+    padding-left:10%;
+    padding-right:10%;
 `
 
 
