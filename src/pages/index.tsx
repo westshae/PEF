@@ -2,8 +2,7 @@ import type { NextPage } from 'next'
 
 //Component imports
 import Navigation from "../components/Navigation"
-import Container from '../components/Container'
-import Content from '../components/Content'
+import {Container, Content} from '../components/Containers'
 import Footer from '../components/Footer'
 
 const Home: NextPage = () => {

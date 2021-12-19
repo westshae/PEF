@@ -2,10 +2,14 @@ import styled from "styled-components"
 import Link from "next/link"
 
 const ButtonStyle = `
-  justify-content:center;
-  width:100%;
-  background:red;
+  background:transparent;
   border:none;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  font-size:1.25rem;
+  padding:1rem;
+  color:#800000;
 `
 
 const StyledButton = styled.button`${ButtonStyle}`;
