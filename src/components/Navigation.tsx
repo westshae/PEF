@@ -1,6 +1,6 @@
 //Package imports
 import styled from "styled-components";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import Link from "next/link";
 
@@ -38,32 +38,43 @@ const Button = styled.a`
   color: #800000;
   border: none;
   font-weight: bold;
-  padding:1rem;
-`
+  padding: 1rem;
+`;
 
 const Search = styled.input`
   justify-content: center;
   align-items: center;
   text-align: center;
-  border:none;
-  height:2rem;
-  input{
-    border:none;
-    :focus{
-      border:none;
+  border: none;
+  height: 2rem;
+  input {
+    border: none;
+    :focus {
+      border: none;
     }
   }
-`
+`;
 
 //Logic for navigation bar
 const Navigation = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      if (window.localStorage.getItem("token") !== null) {
+        setLoggedIn(true);
+      }
+    }
+    
+  });
+
   return (
     <StyledNavigation>
       <Section side="left">
         <Title>Testing</Title>
       </Section>
       <Section side="right">
-        <Search/>
+        <Search />
         <Link href="/">
           <Button>Homepage</Button>
         </Link>
@@ -76,9 +87,11 @@ const Navigation = () => {
         <Link href="/settings">
           <Button>Settings</Button>
         </Link>
-        <Link href="/login">
-          <Button>Login</Button>
-        </Link>
+        {!loggedIn && (
+          <Link href="/login">
+            <Button>Login</Button>
+          </Link>
+        )}
       </Section>
     </StyledNavigation>
   );

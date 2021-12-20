@@ -1,6 +1,7 @@
 import { useState } from "react";
 import {login} from "../interactions/user_interactions"
 import styled from "styled-components";
+import Router from "next/router"
 
 interface User {
     id:number,
@@ -37,11 +38,13 @@ const UserInput = () =>{
 
     const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-
+        
         if(code == ""){
             login(email, undefined);
         }else{
-            login(email, code);
+            login(email, code).then(()=>{
+                Router.push('/profile')
+            })
         }
     }
 

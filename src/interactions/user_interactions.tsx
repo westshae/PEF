@@ -1,5 +1,5 @@
 import axios, {AxiosError} from "axios";
-
+import Router from 'next/router'
 interface CheckCodeResponse {
   id:number,
   access_token:string,
@@ -19,7 +19,6 @@ const login = async (email:string, code?:string) => {
         console.error(e);
       })
     }else{
-      console.log("checkcode start")
       data = (await axios.get("http://localhost:5000/auth/checkcode", {
         params:{
           email:email,
@@ -27,8 +26,9 @@ const login = async (email:string, code?:string) => {
         }
       })).data;
 
-      window.localStorage.setItem("token", data.access_token);
-      window.localStorage.setItem("email", email);
+      await window.localStorage.setItem("token", data.access_token);
+      await window.localStorage.setItem("email", email);
+      
 
 
     }
