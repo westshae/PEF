@@ -11,6 +11,8 @@ import Router from "next/router";
 
 const OverallStyle = styled.div`
   justify-content: center;
+  display:grid;
+  grid-template-columns:1fr 1fr;
 `;
 
 const Form = styled.form`
@@ -41,6 +43,16 @@ const Input = styled.input`
   }
 `;
 
+const Title = styled.h1`
+  color:#800000;
+  font-size:2rem;
+`
+
+const Text = styled.p`
+  color:#800000;
+  font-size:1.25rem;
+`
+
 const Button = styled.button`
 font-size: 1.25rem;
 background: transparent;
@@ -70,6 +82,17 @@ const UserInput = () => {
 
   return (
     <OverallStyle>
+      <div>
+        <Title>Our Login Systems</Title>
+        <Text>
+          Our goal when creating our authentication system is to prevent a possible breach of security. Because of this, we decided 
+          that passwords are a risk we don't require. In order to register, or login, put your email into the field and press submit. 
+        </Text>
+        <Text>
+          Once you've done that, you'll be sent an email with an 8 digit code. Enter that code, submit again and you'll be logged into 
+          the account connected, or a new account will be created.
+        </Text>
+      </div>
       <Form onSubmit={submitForm}>
         <Label htmlFor={"email"}>Email</Label>
         <Input
