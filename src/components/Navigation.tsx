@@ -65,7 +65,6 @@ const Navigation = () => {
         setLoggedIn(true);
       }
     }
-    
   });
 
   return (
@@ -75,23 +74,30 @@ const Navigation = () => {
       </Section>
       <Section side="right">
         <Search />
-        <Link href="/">
-          <Button>Homepage</Button>
-        </Link>
-        <Link href="/explore">
-          <Button>Explore</Button>
-        </Link>
-        <Link href="/profile">
-          <Button>Your profile</Button>
-        </Link>
-        <Link href="/settings">
-          <Button>Settings</Button>
-        </Link>
+          <Link href="/">
+            <Button>Homepage</Button>
+          </Link>
+        {loggedIn && (
+          <Link href="/explore">
+            <Button>Explore</Button>
+          </Link>
+        )}
+        {loggedIn && (
+          <Link href="/profile">
+            <Button>Your profile</Button>
+          </Link>
+        )}
+        {loggedIn && (
+          <Link href="/settings">
+            <Button>Settings</Button>
+          </Link>
+        )}
         {!loggedIn && (
           <Link href="/login">
             <Button>Login</Button>
           </Link>
         )}
+
       </Section>
     </StyledNavigation>
   );
