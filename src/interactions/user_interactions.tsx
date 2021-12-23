@@ -37,5 +37,26 @@ const login = async (email:string, code?:string) => {
   }
 }
 
+interface SettingsResponse {
+  city:string,
+  country:string,
+  ballance:number
+}
 
-export {login}
+const getSettings = async (email:string, token:string) =>{
+  try{
+    axios.get("http://localhost:5000/auth/settings", {
+      params:{
+        email:email,
+        token:token
+      }
+    }).then((res)=>{
+      return res.data;
+    })
+  }catch(error){
+    console.error(error);
+  }
+}
+
+
+export {login, getSettings}
