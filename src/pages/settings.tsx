@@ -7,6 +7,7 @@ import Footer from '../components/Footer'
 import { useEffect, useState } from 'react'
 import { getSettings } from '../interactions/user_interactions'
 import axios from 'axios'
+import styled from 'styled-components'
 
 interface SettingsInterface{
   city?:string,
@@ -15,20 +16,44 @@ interface SettingsInterface{
   profession?:string,
 }
 
+const Form = styled.form`
+
+`
+
+const Label = styled.label`
+
+`
+
+const Button = styled.button`
+
+`
+
+const Checkbox = styled.input`
+
+`
+
+const InputField = styled.input`
+
+`
+
 const toggleSetting = (label:string, currentValue:boolean) =>{
   return(
-    <div>
-      <form>
-        <label>{label}</label>
-        <input type="checkbox" checked={currentValue}/>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+      <Form>
+        <Label>{label}</Label>
+        <Checkbox type="checkbox" checked={currentValue}/>
+        <Button type="submit">Submit</Button>
+      </Form>
   )
 }
 
-const inputSetting = () =>{
-
+const inputSetting = (label:string, currentValue:string) =>{
+  return(
+      <Form>
+        <Label>{label}</Label>
+        <InputField/>
+        <Button type="submit">Submit</Button>
+      </Form>
+  )
 }
 
 const Settings: NextPage = () => {
@@ -57,6 +82,7 @@ const Settings: NextPage = () => {
         <h1>Settings</h1>
         <h1>{settings.profession}</h1>
         {toggleSetting("ree", false)}
+        {inputSetting("woo", "default")}
 
       </Content>
       <Footer/>
