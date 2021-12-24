@@ -5,7 +5,6 @@ import Navigation from "../components/Navigation"
 import {Container, Content} from '../components/Containers'
 import Footer from '../components/Footer'
 import { useEffect, useState } from 'react'
-import { getSettings } from '../interactions/user_interactions'
 import axios from 'axios'
 import styled from 'styled-components'
 
@@ -38,27 +37,33 @@ const InputField = styled.input`
 
 const toggleSetting = (label:string, currentValue:boolean) =>{
   return(
-      <Form>
-        <Label>{label}</Label>
-        <Checkbox type="checkbox" checked={currentValue}/>
-        <Button type="submit">Submit</Button>
-      </Form>
+      <div>
+
+<Label>{label}</Label>
+        <Checkbox type="checkbox" defaultChecked={currentValue}/>
+      </div>
   )
 }
 
 const inputSetting = (label:string, currentValue:string) =>{
   return(
-      <Form>
-        <Label>{label}</Label>
+    <div>
+
+<Label>{label}</Label>
         <InputField/>
-        <Button type="submit">Submit</Button>
-      </Form>
+    </div>
   )
 }
 
 const Settings: NextPage = () => {
-  const email = window.localStorage.getItem("email");
-  const token = window.localStorage.getItem("token");
+  let email:string;
+  let token:string;
+  try{
+    email = window.localStorage.getItem("email")!;
+    token = window.localStorage.getItem("token")!;
+  }catch(e){
+    console.error(e);
+  }
 
   const [settings, setSettings] = useState<SettingsInterface>({});
 
@@ -81,8 +86,12 @@ const Settings: NextPage = () => {
       <Content>
         <h1>Settings</h1>
         <h1>{settings.profession}</h1>
-        {toggleSetting("ree", false)}
+        <Form>
+
+        {toggleSetting("ree", true)}
         {inputSetting("woo", "default")}
+          <Button type="submit">Submit</Button>
+        </Form>
 
       </Content>
       <Footer/>
