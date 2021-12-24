@@ -15,6 +15,22 @@ interface SettingsInterface{
   profession?:string,
 }
 
+const toggleSetting = (label:string, currentValue:boolean) =>{
+  return(
+    <div>
+      <form>
+        <label>{label}</label>
+        <input type="checkbox" checked={currentValue}/>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  )
+}
+
+const inputSetting = () =>{
+
+}
+
 const Settings: NextPage = () => {
   const email = window.localStorage.getItem("email");
   const token = window.localStorage.getItem("token");
@@ -40,6 +56,8 @@ const Settings: NextPage = () => {
       <Content>
         <h1>Settings</h1>
         <h1>{settings.profession}</h1>
+        {toggleSetting("ree", false)}
+
       </Content>
       <Footer/>
     </Container>
