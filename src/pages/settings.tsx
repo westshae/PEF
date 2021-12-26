@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import { updateSettings } from "../interactions/user_interactions";
 
 interface SettingsInterface {
   city?: string;
@@ -43,6 +44,10 @@ const inputSetting = (label: string, currentValue: string) => {
   );
 };
 
+interface formInterface{
+
+}
+
 const FormContainer = (settings:SettingsInterface) =>{
   let values = [];
   console.log(settings);
@@ -53,10 +58,35 @@ const FormContainer = (settings:SettingsInterface) =>{
       values.push(inputSetting(key, value));
     }
   }
+  const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    let email: string;
+    let token: string;
+    let settings:string[] = [];
+    try {
+      email = window.localStorage.getItem("email")!;
+      token = window.localStorage.getItem("token")!;
+
+      for(let i = 0; i < event.currentTarget.length; i++){
+        if(event.currentTarget[i].getAttribute("type") === "submit") continue;
+        let current:HTMLInputElement = event.currentTarget[i] as HTMLInputElement;
+        settings.push(current.value);
+      }
+      console.log(settings);
+      if (email !== undefined && token !== undefined) {
+        updateSettings(email, token, settings);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+
+    
+  }
   return(
-    <Form>
+    <Form onSubmit={submitForm}>
       {values}
-      <Button type="submit">Submit</Button>
+      <Button type="submit" >Submit</Button>
 
     </Form>
   )
@@ -72,12 +102,15 @@ const Settings: NextPage = () => {
     console.error(e);
   }
 
+
+  
+
   const [settings, setSettings] = useState<SettingsInterface>({});
 
   useEffect(() => {
     if (email !== undefined && token !== undefined) {
       axios
-        .get("http://localhost:5000/auth/settings", {
+        .get("http://localhost:5000/auth/settings/get/", {
           params: {
             email: email,
             token: token,

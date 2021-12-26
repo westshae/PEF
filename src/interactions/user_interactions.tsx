@@ -43,9 +43,16 @@ interface SettingsResponse {
   ballance:number
 }
 
+interface SettingsInterface {
+  city?: string;
+  country?: string;
+  balance?: number;
+  profession?: string;
+}
+
 const getSettings = async (email:string, token:string) =>{
   try{
-    axios.get("http://localhost:5000/auth/settings", {
+    axios.get("http://localhost:5000/auth/settings/get/", {
       params:{
         email:email,
         token:token
@@ -58,5 +65,20 @@ const getSettings = async (email:string, token:string) =>{
   }
 }
 
+const updateSettings = async (email:string, token:string, settings:string[]) =>{
+  console.log(email)
+  console.log(token)
+  console.log(settings)
+  try{
+    axios.post("http://localhost:5000/auth/settings/update/", {
+        email:email,
+        token:token,
+        settings:settings,
+    })
+  }catch(error){
+    console.error(error);
+  }
+}
 
-export {login, getSettings}
+
+export {login, getSettings, updateSettings}
