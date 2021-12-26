@@ -16,41 +16,71 @@ interface SettingsInterface {
   profession?: string;
 }
 
-const Form = styled.form``;
+const Form = styled.form`
+  justify-content: center;
+  width: fit-content;
+  margin: auto;
+  display:grid;
+  gap:0.5rem;
+`;
 
-const Label = styled.label``;
+const Label = styled.label`
+  color: #800000;
+  font-size: 1.25rem;
+  text-align:left;
+`;
 
-const Button = styled.button``;
-
+const Button = styled.button`
+font-size: 1.25rem;
+background: transparent;
+color: #800000;
+border: none;
+font-weight: bold;
+text-align:center;
+display: block;
+margin: 0 auto;
+`;
 const Checkbox = styled.input``;
 
-const InputField = styled.input``;
+const InputField = styled.input`
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: none;
+  height: 2rem;
+  input {
+    border: none;
+    :focus {
+      border: none;
+    }
+  }
+`;
+
+const IndividualContainer = styled.div`
+  display:grid;
+  grid-template-columns:1fr;
+`
 
 const toggleSetting = (label: string, currentValue: boolean) => {
   return (
-    <div>
-      <Label>{label}</Label>
+    <IndividualContainer>
+      <Label>{label.charAt(0).toUpperCase() + label.slice(1)}</Label>
       <Checkbox type="checkbox" defaultChecked={currentValue} />
-    </div>
+    </IndividualContainer>
   );
 };
 
 const inputSetting = (label: string, currentValue: string) => {
   return (
-    <div>
-      <Label>{label}</Label>
+    <IndividualContainer>
+      <Label>{label.charAt(0).toUpperCase() + label.slice(1)}</Label>
       <InputField placeholder={currentValue}/>
-    </div>
+    </IndividualContainer>
   );
 };
 
-interface formInterface{
-
-}
-
 const FormContainer = (settings:SettingsInterface) =>{
   let values = [];
-  console.log(settings);
   for(const [key, value] of Object.entries(settings)){
     if(typeof value === "boolean"){
       values.push(toggleSetting(key, value));
@@ -77,7 +107,6 @@ const FormContainer = (settings:SettingsInterface) =>{
           settings.push(current.value);
         }
       }
-      console.log(settings);
       if (email !== undefined && token !== undefined) {
         updateSettings(email, token, settings);
       }

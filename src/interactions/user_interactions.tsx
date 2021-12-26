@@ -1,5 +1,4 @@
 import axios, {AxiosError} from "axios";
-import Router from 'next/router'
 interface CheckCodeResponse {
   id:number,
   access_token:string,
@@ -37,19 +36,6 @@ const login = async (email:string, code?:string) => {
   }
 }
 
-interface SettingsResponse {
-  city:string,
-  country:string,
-  ballance:number
-}
-
-interface SettingsInterface {
-  city?: string;
-  country?: string;
-  balance?: number;
-  profession?: string;
-}
-
 const getSettings = async (email:string, token:string) =>{
   try{
     axios.get("http://localhost:5000/auth/settings/get/", {
@@ -66,9 +52,6 @@ const getSettings = async (email:string, token:string) =>{
 }
 
 const updateSettings = async (email:string, token:string, settings:string[]) =>{
-  console.log(email)
-  console.log(token)
-  console.log(settings)
   try{
     axios.post("http://localhost:5000/auth/settings/update/", {
         email:email,
