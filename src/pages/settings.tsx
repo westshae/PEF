@@ -71,7 +71,11 @@ const FormContainer = (settings:SettingsInterface) =>{
       for(let i = 0; i < event.currentTarget.length; i++){
         if(event.currentTarget[i].getAttribute("type") === "submit") continue;
         let current:HTMLInputElement = event.currentTarget[i] as HTMLInputElement;
-        settings.push(current.value);
+        if(current.value == ''){
+          settings.push(current.placeholder)
+        }else{
+          settings.push(current.value);
+        }
       }
       console.log(settings);
       if (email !== undefined && token !== undefined) {
