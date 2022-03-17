@@ -7,29 +7,9 @@ import Link from "next/link";
 //Style for navigation bar background
 const StyledNavigation = styled.nav`
   background-color: transparent;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-`;
-
-interface SectionProps {
-  side: string;
-}
-
-const Section = styled.div<SectionProps>`
   display: flex;
-  justify-content: ${(props) => props.side};
-  align-items: center;
-  gap: 2rem;
-  height: 100%;
-  width: 100%;
-`;
-
-const Title = styled.button`
-  font-size: 1.5rem;
-  background: transparent;
-  color: #800000;
-  border: none;
-  font-weight: bold;
+  width:100%;
+  flex-direction:column;
 `;
 
 const Button = styled.a`
@@ -69,36 +49,10 @@ const Navigation = () => {
 
   return (
     <StyledNavigation>
-      <Section side="left">
-        <Title>Testing</Title>
-      </Section>
-      <Section side="right">
         <Search />
-          <Link href="/">
-            <Button>Homepage</Button>
-          </Link>
-        {loggedIn && (
-          <Link href="/explore">
-            <Button>Explore</Button>
-          </Link>
-        )}
-        {loggedIn && (
-          <Link href="/profile">
-            <Button>Your profile</Button>
-          </Link>
-        )}
-        {loggedIn && (
-          <Link href="/settings">
-            <Button>Settings</Button>
-          </Link>
-        )}
-        {!loggedIn && (
-          <Link href="/login">
-            <Button>Login</Button>
-          </Link>
-        )}
-
-      </Section>
+        <Link href="/">
+          <Button>Homepage</Button>
+        </Link>
     </StyledNavigation>
   );
 };

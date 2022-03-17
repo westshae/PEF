@@ -3,12 +3,18 @@ import styled from "styled-components";
 
 //Overall container for all components on the page, wraps around navbar and content
 const Container = styled.div`
-    background-color:#EDEDE5;
     display:flex;
     flex-direction:column;
     overflow:visible;
     height: 100vh;
     width: 100vw;
+`
+
+const Overall = styled.div`
+    display:grid;
+    grid-template-columns:1fr 2fr;
+    background-color:#EDEDE5;
+
 `
 
 const Content = styled.div`
@@ -25,4 +31,4 @@ const Content = styled.div`
 
 
 
-export {Container, Content};
+export {Container, Content, Overall};

@@ -1,27 +1,31 @@
-import type { NextPage } from 'next'
+import type { NextPage } from "next";
 
 //Component imports
-import Navigation from "../components/Navigation"
-import {Container, Content} from '../components/Containers'
-import Footer from '../components/Footer'
+import Navigation from "../components/Navigation";
+import { Container, Content, Overall } from "../components/Containers";
+import Footer from "../components/Footer";
+import React from "react";
+import ExploreCards from "../components/explore/Feed";
 
 const Home: NextPage = () => {
   let email;
   let token;
-  if(typeof window !== "undefined"){
+  if (typeof window !== "undefined") {
     email = window.localStorage.getItem("email");
     token = window.localStorage.getItem("token");
   }
-  // let user = useContext(userContext);
   return (
-    <Container>
-      <Navigation/>
-      <Content>
-        <h1>Landing</h1>
-      </Content>
-      <Footer/>
-    </Container>
-  )
-}
+    <Overall>
+      <Navigation />
 
-export default Home
+      <Container>
+        <Content>
+          <ExploreCards/>
+        </Content>
+        <Footer />
+      </Container>
+    </Overall>
+  );
+};
+
+export default Home;
