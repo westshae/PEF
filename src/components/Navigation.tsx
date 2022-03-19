@@ -15,7 +15,7 @@ const StyledNavigation = styled.nav`
 const Button = styled.a`
   font-size: 1.25rem;
   background: transparent;
-  color: #800000;
+  color: #ebebeb;
   border: none;
   font-weight: bold;
   padding: 1rem;
@@ -49,7 +49,8 @@ const Navigation = () => {
 
   return (
     <StyledNavigation>
-        <Search />
+        {/* <Search /> */}
+        {/* Open content box */}
         <Link href="/">
           <Button>Homepage</Button>
         </Link>

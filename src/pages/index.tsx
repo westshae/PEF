@@ -5,7 +5,8 @@ import Navigation from "../components/Navigation";
 import { Container, Content, Overall } from "../components/Containers";
 import Footer from "../components/Footer";
 import React from "react";
-import ExploreCards from "../components/explore/Feed";
+import Feed from "../components/feed/Feed";
+import NewPost from "../components/feed/newPost";
 
 const Home: NextPage = () => {
   let email;
@@ -20,7 +21,8 @@ const Home: NextPage = () => {
 
       <Container>
         <Content>
-          <ExploreCards/>
+          <NewPost/>
+          <Feed/>
         </Content>
         <Footer />
       </Container>

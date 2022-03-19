@@ -7,26 +7,23 @@ const Container = styled.div`
     flex-direction:column;
     overflow:visible;
     height: 100vh;
-    width: 100vw;
 `
 
 const Overall = styled.div`
     display:grid;
-    grid-template-columns:1fr 2fr;
-    background-color:#EDEDE5;
+    grid-template-columns:1fr 3fr;
+    background-color:#212121;
+    width: 100vw;
 
 `
 
 const Content = styled.div`
-    margin-bottom:3%;
     background-clip:margin-box;
     background-color:transparent;
     display:flex;
     flex-direction:column;
     overflow-x:hidden;
     overflow-y:scroll;
-    padding-left:10%;
-    padding-right:10%;
 `
 
 
